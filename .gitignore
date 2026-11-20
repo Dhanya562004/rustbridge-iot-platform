@@ -1,0 +1,57 @@
+# Rust
+/target/
+**/*.rs.bk
+# Note: Cargo.lock is committed for reproducible binary builds
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+logs/
+
+# Config with secrets
+config.local.yaml
+config.production.yaml
+
+# Build artifacts
+dist/
+build/
+
+# Test coverage
+coverage/
+*.profraw
+*.profdata
+
+# Docker
+.docker/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# agent / assistant tooling
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.claude/
+.cursor/
+.cursorrules
+.codex/
+.windsurf/
+.agents/
+.opencode/

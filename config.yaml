@@ -1,0 +1,96 @@
+# RustBridge Configuration
+# Industrial Protocol Bridge - Modbus to MQTT/JSON Gateway
+
+server:
+  host: "0.0.0.0"
+  port: 3000
+  metrics_enabled: true
+
+mqtt:
+  enabled: true              # Enable MQTT publishing
+  host: "localhost"
+  port: 1883
+  client_id: "rustbridge"
+  topic_prefix: "rustbridge"
+  qos: 1                     # 0=AtMostOnce, 1=AtLeastOnce, 2=ExactlyOnce
+  retain: false              # Retain messages on broker
+  # username: "user"
+  # password: "secret"
+
+devices:
+  # Example: Modbus TCP device
+  - id: "plc-demo"
+    name: "Demo PLC"
+    device_type: tcp
+    connection:
+      host: "localhost"
+      port: 5020
+      unit_id: 1
+    poll_interval_ms: 1000
+    registers:
+      - name: "temperature"
+        address: 0
+        register_type: holding
+        count: 1
+        data_type: u16
+        unit: "°C"
+        scale: 0.1
+
+      - name: "humidity"
+        address: 1
+        register_type: holding
+        count: 1
+        data_type: u16
+        unit: "%"
+        scale: 0.1
+
+      - name: "pressure"
+        address: 2
+        register_type: holding
+        count: 1
+        data_type: u16
+        unit: "bar"
+        scale: 0.01
+
+      - name: "motor_speed"
+        address: 10
+        register_type: holding
+        count: 1
+        data_type: u16
+        unit: "RPM"
+
+      - name: "valve_status"
+        address: 100
+        register_type: coil
+        count: 1
+        data_type: bool
+
+  # Example: Modbus RTU device (Serial)
+  # Uncomment and adjust for your serial device
+  # - id: "sensor-rtu"
+  #   name: "RTU Temperature Sensor"
+  #   device_type: rtu
+  #   connection:
+  #     port: "/dev/ttyUSB0"      # Linux: /dev/ttyUSB0, macOS: /dev/cu.usbserial-*, Windows: COM1
+  #     baud_rate: 9600           # Common: 9600, 19200, 38400, 57600, 115200
+  #     data_bits: 8              # 5, 6, 7, or 8
+  #     stop_bits: 1              # 1 or 2
+  #     parity: "none"            # none, even, or odd
+  #     unit_id: 1                # Modbus slave address (1-247)
+  #   poll_interval_ms: 2000
+  #   registers:
+  #     - name: "temperature"
+  #       address: 0
+  #       register_type: input
+  #       count: 1
+  #       data_type: i16
+  #       unit: "°C"
+  #       scale: 0.1
+  #
+  #     - name: "humidity"
+  #       address: 1
+  #       register_type: input
+  #       count: 1
+  #       data_type: u16
+  #       unit: "%"
+  #       scale: 0.1
