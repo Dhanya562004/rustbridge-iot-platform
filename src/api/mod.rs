@@ -5,6 +5,7 @@
 //! and WebSocket streaming for real-time register updates.
 
 pub mod auth;
+pub mod html;
 pub mod rate_limit;
 
 use axum::{
@@ -14,7 +15,7 @@ use axum::{
     },
     http::StatusCode,
     middleware,
-    response::{IntoResponse, Json, Response},
+    response::{Html, IntoResponse, Json, Response},
     routing::{get, post},
     Router,
 };
@@ -151,6 +152,8 @@ pub fn create_router_with_rate_limit(
         .allow_headers(Any);
 
     Router::new()
+        // Homepage
+        .route("/", get(homepage))
         // Health & Stats
         .route("/health", get(health))
         .route("/api/info", get(api_info))
@@ -232,6 +235,11 @@ impl ApiError {
 // ============================================================================
 // Health, Info & Stats Endpoints
 // ============================================================================
+
+/// Platform homepage web console
+async fn homepage() -> Html<&'static str> {
+    Html(html::HOMEPAGE_HTML)
+}
 
 /// Health check response
 #[derive(Serialize)]
@@ -352,6 +360,11 @@ async fn api_info(State(_state): State<Arc<ApiState>>) -> Json<ApiInfoResponse> 
         maintainer: "Dhanya",
         repository: "https://github.com/Dhanya562004/rustbridge-iot-platform.git",
         endpoints: vec![
+            EndpointInfo {
+                method: "GET",
+                path: "/",
+                description: "Platform web dashboard and live console",
+            },
             EndpointInfo {
                 method: "GET",
                 path: "/health",
