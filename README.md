@@ -3,6 +3,7 @@
 A Rust-powered IoT telemetry gateway that connects Modbus TCP/RTU devices with REST APIs, WebSocket streams, MQTT messaging, and Prometheus monitoring.
 
 [![CI](https://github.com/Dhanya562004/rustbridge-iot-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/Dhanya562004/rustbridge-iot-platform/actions/workflows/ci.yml)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-brightgreen.svg)](https://rustbridge-iot-platform.onrender.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/Rust-1.85%2B-orange.svg)](https://www.rust-lang.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](Dockerfile)
@@ -10,8 +11,29 @@ A Rust-powered IoT telemetry gateway that connects Modbus TCP/RTU devices with R
 
 ---
 
+## Live Deployment & Links
+
+The platform is deployed and running live on Render:
+
+| Service / Resource | Endpoint / URL | Description |
+| :--- | :--- | :--- |
+| 🖥️ **Live Dashboard** | [https://rustbridge-iot-platform.onrender.com/](https://rustbridge-iot-platform.onrender.com/) | Real-time web console and industrial gateway landing page |
+| 💚 **Health Check** | [https://rustbridge-iot-platform.onrender.com/health](https://rustbridge-iot-platform.onrender.com/health) | Gateway uptime, process health, and storage backend status |
+| 📋 **API Information** | [https://rustbridge-iot-platform.onrender.com/api/info](https://rustbridge-iot-platform.onrender.com/api/info) | JSON catalog of all registered routes, methods, and metadata |
+| 📊 **Platform Statistics** | [https://rustbridge-iot-platform.onrender.com/api/stats](https://rustbridge-iot-platform.onrender.com/api/stats) | Aggregate metrics on telemetry ingestion and device states |
+| 🔌 **Device Registry** | [https://rustbridge-iot-platform.onrender.com/api/devices](https://rustbridge-iot-platform.onrender.com/api/devices) | List of configured Modbus devices and active register counts |
+| 📈 **Prometheus Metrics** | [https://rustbridge-iot-platform.onrender.com/metrics](https://rustbridge-iot-platform.onrender.com/metrics) | Time-series metrics export for Prometheus and Grafana scraping |
+| ⚡ **WebSocket Endpoint** | `wss://rustbridge-iot-platform.onrender.com/ws` | Live sub-millisecond bidirectional event and telemetry stream |
+| 🐙 **GitHub Repository** | [https://github.com/Dhanya562004/rustbridge-iot-platform](https://github.com/Dhanya562004/rustbridge-iot-platform) | Source code, test suites, architecture, and CI/CD pipelines |
+
+> [!NOTE]
+> **Cloud Demo Notice:** The cloud deployment operates in demo mode without physical RS-485 serial buses or private industrial Ethernet switches connected. Field devices accurately report as disconnected or awaiting local field gateway simulators.
+
+---
+
 ## Table of Contents
 
+- [Live Deployment & Links](#live-deployment--links)
 - [Overview](#overview)
 - [Problem Statement](#problem-statement)
 - [Key Features](#key-features)
