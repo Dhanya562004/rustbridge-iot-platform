@@ -56,7 +56,7 @@ The platform is deployed and running live on Render:
 - [Security Considerations](#security-considerations)
 - [Limitations & Roadmap](#limitations--roadmap)
 - [Contributing](#contributing)
-- [License & Attribution](#license--attribution)
+- [License](#license)
 - [Maintainer](#maintainer)
 
 ---
@@ -684,12 +684,9 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## License & Attribution
+## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for full legal details.
-
-### Upstream Attribution:
-RustBridge was originally developed by **Mustafa Sarac** (2025–2026) under the MIT License. Upstream copyright and permissions are preserved in accordance with the MIT License terms.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 

@@ -2,7 +2,7 @@
 name = "rustbridge"
 version = "0.2.0"
 edition = "2021"
-authors = ["Dhanya <kdhanya762@gmail.com>", "Mustafa Sarac (Upstream author)"]
+authors = ["Dhanya <kdhanya762@gmail.com>"]
 description = "Industrial IoT Protocol Bridge - Modbus TCP/RTU to JSON/MQTT Gateway & Telemetry Platform"
 license = "MIT"
 repository = "https://github.com/Dhanya562004/rustbridge-iot-platform.git"

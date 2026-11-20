@@ -647,7 +647,7 @@ pub const HOMEPAGE_HTML: &str = r##"<!DOCTYPE html>
     <!-- Footer -->
     <footer>
       <p><strong>RustBridge IoT Platform</strong> &mdash; Maintained by <strong>Dhanya</strong> (<a href="https://github.com/Dhanya562004" target="_blank">@Dhanya562004</a>)</p>
-      <p>Upstream Attribution: Mustafa Sarac (2025&ndash;2026) under the MIT License.</p>
+      <p>Licensed under the MIT License.</p>
       <p><a href="https://github.com/Dhanya562004/rustbridge-iot-platform" target="_blank">GitHub Repository</a> &bull; <a href="/api/info" target="_blank">API Catalog</a> &bull; <a href="/health" target="_blank">Health Check</a> &bull; <a href="/metrics" target="_blank">Prometheus Metrics</a></p>
     </footer>
 
