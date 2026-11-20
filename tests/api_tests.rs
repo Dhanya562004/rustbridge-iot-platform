@@ -115,6 +115,65 @@ async fn post_json(
 }
 
 // ============================================================================
+// Homepage Endpoint Tests
+// ============================================================================
+
+#[tokio::test]
+async fn test_homepage_endpoint() {
+    let state = create_test_state();
+    let app = create_router(state, disabled_auth());
+
+    let response = app
+        .oneshot(
+            Request::builder()
+                .method(Method::GET)
+                .uri("/")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    assert_eq!(response.status(), StatusCode::OK);
+    let content_type = response
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("");
+    assert!(content_type.contains("text/html"));
+
+    let body = response.into_body().collect().await.unwrap().to_bytes();
+    let html = String::from_utf8_lossy(&body);
+    assert!(html.contains("RustBridge IoT Platform"));
+    assert!(html.contains("/health"));
+    assert!(html.contains("/api/stats"));
+}
+
+#[tokio::test]
+async fn test_homepage_accessible_when_auth_enabled() {
+    let state = create_test_state();
+    let auth = AuthConfig {
+        enabled: true,
+        api_keys: vec!["secret-key".to_string()],
+        exclude_paths: vec!["/health".to_string()],
+    };
+    let app = create_router(state, auth);
+
+    let response = app
+        .oneshot(
+            Request::builder()
+                .method(Method::GET)
+                .uri("/")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    assert_eq!(response.status(), StatusCode::OK);
+}
+
+// ============================================================================
 // Health Endpoint Tests
 // ============================================================================
 

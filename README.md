@@ -6,7 +6,7 @@ A Rust-powered IoT telemetry gateway that connects Modbus TCP/RTU devices with R
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/Rust-1.85%2B-orange.svg)](https://www.rust-lang.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](Dockerfile)
-[![Tests](https://img.shields.io/badge/Tests-137%20Passed-brightgreen.svg)](#test-results)
+[![Tests](https://img.shields.io/badge/Tests-139%20Passed-brightgreen.svg)](#test-results)
 
 ---
 
@@ -346,6 +346,7 @@ The REST API runs on port 3000 by default. Protected routes require the `X-API-K
 
 | Method | Path | Auth Required | Description |
 | :--- | :--- | :--- | :--- |
+| `GET` | `/` | No | Platform web dashboard and live industrial console |
 | `GET` | `/health` | No | System health, uptime, storage type, and device counts |
 | `GET` | `/api/info` | No | Platform metadata, maintainer info, and endpoint list |
 | `GET` | `/api/stats` | Yes | Global aggregate statistics (records stored, connectivity) |
@@ -589,13 +590,13 @@ Actual test execution results from the latest verification run:
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **`src/lib.rs` (Unit Tests)** | 48 | 48 | 0 | 0 | Register conversions (U16, I16, U32, I32, F32, Bool), scaling, offset, MQTT QoS, config validation, in-memory ring buffer, URL sanitization |
 | **`src/main.rs` (Unit Tests)** | 48 | 48 | 0 | 0 | Binary integration, metrics recording, device status tracking, poll cycle counters, storage fallbacks |
-| **`tests/api_tests.rs`** | 24 | 24 | 0 | 0 | REST API endpoints, auth enforcement, wildcard path exclusions, multi-key verification, error JSON structures, register reads/writes |
+| **`tests/api_tests.rs`** | 26 | 26 | 0 | 0 | Web dashboard endpoint, auth bypass for `/`, REST API endpoints, auth enforcement, wildcard path exclusions, multi-key verification, error JSON structures, register reads/writes |
 | **`tests/api_history_tests.rs`** | 4 | 4 | 0 | 0 | Device status endpoint, historical telemetry pagination (`limit`/`offset`), register filtering, time validation, aggregate platform stats |
 | **`tests/device_retry_tests.rs`** | 4 | 4 | 0 | 0 | Exponential backoff progression, max backoff clamps, jitter bounds, consecutive error counters, automatic recovery transitions |
 | **`tests/mqtt_integration_tests.rs`**| 4 | 4 | 0 | 0 | Topic hierarchy formatting, telemetry payload JSON serialization, QoS mappings, TLS configuration verification |
 | **`tests/modbus_sim_tests.rs`** | 3 | 3 | 0 | 0 | In-process Modbus TCP mock server, register frame parsing, graceful offline non-crashing handling, automatic reconnect on socket recovery |
 | **`tests/rate_limit_tests.rs`** | 2 | 2 | 0 | 0 | Sliding-window rate limit allowance, enforcement of `429 Too Many Requests`, `Retry-After: 60` headers |
-| **Total** | **137** | **137** | **0** | **0** | **100% Pass Rate** |
+| **Total** | **139** | **139** | **0** | **0** | **100% Pass Rate** |
 
 ---
 

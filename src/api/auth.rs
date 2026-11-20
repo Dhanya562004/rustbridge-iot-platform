@@ -69,8 +69,8 @@ pub async fn api_key_auth(
 
     let path = request.uri().path();
 
-    // Skip auth for excluded paths
-    if auth_state.is_excluded_path(path) {
+    // Skip auth for root homepage or excluded paths
+    if path == "/" || auth_state.is_excluded_path(path) {
         return next.run(request).await;
     }
 
